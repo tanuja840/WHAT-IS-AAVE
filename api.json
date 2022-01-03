@@ -1,0 +1,161 @@
+[
+{
+	"index": 1,
+	"Month": "NOVEMBER",
+	"value": 100,
+	"valueUSDC": "50"
+},
+
+{
+	"index": 2,
+	"Month": "NOVEMBER",
+	"value": 200,
+	"valueUSDC": 100
+}, {
+	"index": 3,
+	"Month": "NOVEMBER",
+	"value": 300,
+	"valueUSDC": 150
+}, {
+	"index": 4,
+	"Month": "NOVEMBER",
+	"value": 400,
+	"valueUSDC": 200
+}, {
+	"index": 5,
+	"Month": "NOVEMBER",
+	"value": 500,
+	"valueUSDC": 250
+}, {
+	"index": 6,
+	"Month": "NOVEMBER",
+	"value": 600,
+	"valueUSDC": 300
+}, {
+	"index": 7,
+	"Month": "NOVEMBER",
+	"value": 700,
+	"valueUSDC": 350
+}, {
+	"index": 8,
+	"Month": "NOVEMBER",
+	"value": 800,
+	"valueUSDC": 400
+}, {
+	"index": 9,
+	"Month": "NOVEMBER",
+	"value": 900,
+	"valueUSDC": 450
+
+},
+
+
+{
+	"index": 10,
+	"Month": "NOVEMBER",
+	"value": 1000,
+	"valueUSDC": 500
+}, {
+	"index": 11,
+	"Month": "NOVEMBER",
+	"value": 1100,
+	"valueUSDC": 550
+}, {
+	"index": 12,
+	"Month": "NOVEMBER",
+	"value": 1200,
+	"valueUSDC": 600
+}, {
+	"index": 13,
+	"Month": "NOVEMBER",
+	"value": 1300,
+	"valueUSDC": 650
+}, {
+	"index": 14,
+	"Month": "NOVEMBER",
+	"value": 1400,
+	"valueUSDC": 700
+}, {
+	"index": 15,
+	"Month": "NOVEMBER",
+	"value": 1500,
+	"valueUSDC": 750
+}, {
+	"index": 16,
+	"Month": "NOVEMBER",
+	"value": 1600,
+	"valueUSDC": 800
+}, {
+	"index": 17,
+	"Month": "NOVEMBER",
+	"value": 1700,
+	"valueUSDC": 850
+
+},
+
+{
+	"index": 18,
+	"Month": "NOVEMBER",
+	"value": 1800,
+	"valueUSDC": 900
+}, {
+	"index": 19,
+	"Month": "NOVEMBER",
+	"value": 1900,
+	"valueUSDC": 950
+}, {
+	"index": 20,
+	"Month": "NOVEMBER",
+	"value": 2000,
+	"valueUSDC": 1000
+}, {
+	"index": 21,
+	"Month": "NOVEMBER",
+	"value": 2100,
+	"valueUSDC": 1050
+}, {
+	"index": 22,
+	"Month": "NOVEMBER",
+	"value": 2200,
+	"valueUSDC": 1100
+}, {
+	"index": 23,
+	"Month": "NOVEMBER",
+	"value": 2300,
+	"valueUSDC": 1150
+}, {
+	"index": 24,
+	"Month": "NOVEMBER",
+	"value": 2400,
+	"valueUSDC": 1200
+}, {
+	"index": 25,
+	"Month": "NOVEMBER",
+	"value": 2500,
+	"valueUSDC": 1250
+
+},
+
+
+{
+	"index": 26,
+	"Month": "NOVEMBER",
+	"value": 2600,
+	"valueUSDC": 1300
+}, {
+	"index": 27,
+	"Month": "NOVEMBER",
+	"value": 2700,
+	"valueUSDC": 1350
+}, {
+	"index": 28,
+	"Month": "NOVEMBER",
+	"value": 2800,
+	"valueUSDC": 1400
+}, {
+	"index": 29,
+	"Month": "NOVEMBER",
+	"value": 2900,
+	"valueUSDC": 1450
+}
+]
