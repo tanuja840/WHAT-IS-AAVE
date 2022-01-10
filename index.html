@@ -16,7 +16,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
   <script>
 
-    window.onload = function () {
+window.onload = function () {
       var ctx = document.getElementById("myChart").getContext("2d");
       getData();
 
@@ -25,15 +25,13 @@
         console.log(response);
         const data = await response.json();
         console.log(data);
-
-
-        labels=[];
-        values = [];
-        
-        labels.push(data.Month);
-        
       
-        
+
+        labels = [];
+
+
+        labels.push(data.Month);
+
         var myChart = new Chart(ctx, {
           type: 'line',
           data: {
@@ -53,8 +51,8 @@
                 borderColor: "blue",
                 pointBackgroundColor: "#fff",
                 pointRadius: 5,
-                data: values
-                
+                data: [{x: 2014-01-01,13:12, y:  0.03150913206878064}, {x: 2014-01-02,13:20, y: 0.03099128668613856}, {x: 2014-01-03,13:30, y:  0.031547053664307}, {x: 2014-01-01,14:01, y: 0.030997913667039},{x: 2014-01-01,14:10, y:  0.031087750515641638},{x: 2014-01-01,14:30, y: 0.031034187226499397},{x: 2014-01-01,14:40, y: 0.03112307927533224}],
+
               }
             ]
           },
@@ -64,18 +62,18 @@
                 type: 'time',
                 time: {
                   time: {
-            parser: 'DD-MM-YYYY HH:mm',
+                    parser: 'DD-MM-YYYY HH:mm',
                   }
-                  }
-                },
+                }
+              },
               y: [{
                 ticks: {
                   beginAtZero: true
                 }
               }]
             },
-            
-            
+
+
           }
         });
 
