@@ -1,161 +1,66 @@
 [
-{
-	"index": 1,
-	"Month": "NOVEMBER",
-	"value": 100,
-	"valueUSDC": "50"
+	{
+	"liquidityRate_avg": 0.03150913206878064,
+	"Month":"2014-01-01 13:12"
+	
 },
-
 {
-	"index": 2,
-	"Month": "NOVEMBER",
-	"value": 200,
-	"valueUSDC": 100
-}, {
-	"index": 3,
-	"Month": "NOVEMBER",
-	"value": 300,
-	"valueUSDC": 150
-}, {
-	"index": 4,
-	"Month": "NOVEMBER",
-	"value": 400,
-	"valueUSDC": 200
-}, {
-	"index": 5,
-	"Month": "NOVEMBER",
-	"value": 500,
-	"valueUSDC": 250
-}, {
-	"index": 6,
-	"Month": "NOVEMBER",
-	"value": 600,
-	"valueUSDC": 300
-}, {
-	"index": 7,
-	"Month": "NOVEMBER",
-	"value": 700,
-	"valueUSDC": 350
-}, {
-	"index": 8,
-	"Month": "NOVEMBER",
-	"value": 800,
-	"valueUSDC": 400
-}, {
-	"index": 9,
-	"Month": "NOVEMBER",
-	"value": 900,
-	"valueUSDC": 450
-
+	"liquidityRate_avg": 0.03099128668613856,
+	"Month":"2014-01-02 13:20"
 },
-
-
 {
-	"index": 10,
-	"Month": "NOVEMBER",
-	"value": 1000,
-	"valueUSDC": 500
-}, {
-	"index": 11,
-	"Month": "NOVEMBER",
-	"value": 1100,
-	"valueUSDC": 550
-}, {
-	"index": 12,
-	"Month": "NOVEMBER",
-	"value": 1200,
-	"valueUSDC": 600
-}, {
-	"index": 13,
-	"Month": "NOVEMBER",
-	"value": 1300,
-	"valueUSDC": 650
-}, {
-	"index": 14,
-	"Month": "NOVEMBER",
-	"value": 1400,
-	"valueUSDC": 700
-}, {
-	"index": 15,
-	"Month": "NOVEMBER",
-	"value": 1500,
-	"valueUSDC": 750
-}, {
-	"index": 16,
-	"Month": "NOVEMBER",
-	"value": 1600,
-	"valueUSDC": 800
-}, {
-	"index": 17,
-	"Month": "NOVEMBER",
-	"value": 1700,
-	"valueUSDC": 850
-
+	"liquidityRate_avg": 0.031547053664307,
+	"Month":"2014-01-03 13:30"
 },
-
 {
-	"index": 18,
-	"Month": "NOVEMBER",
-	"value": 1800,
-	"valueUSDC": 900
-}, {
-	"index": 19,
-	"Month": "NOVEMBER",
-	"value": 1900,
-	"valueUSDC": 950
-}, {
-	"index": 20,
-	"Month": "NOVEMBER",
-	"value": 2000,
-	"valueUSDC": 1000
-}, {
-	"index": 21,
-	"Month": "NOVEMBER",
-	"value": 2100,
-	"valueUSDC": 1050
-}, {
-	"index": 22,
-	"Month": "NOVEMBER",
-	"value": 2200,
-	"valueUSDC": 1100
-}, {
-	"index": 23,
-	"Month": "NOVEMBER",
-	"value": 2300,
-	"valueUSDC": 1150
-}, {
-	"index": 24,
-	"Month": "NOVEMBER",
-	"value": 2400,
-	"valueUSDC": 1200
-}, {
-	"index": 25,
-	"Month": "NOVEMBER",
-	"value": 2500,
-	"valueUSDC": 1250
-
+	"liquidityRate_avg": 0.030997913667039,
+	"Month":"2014-01-01 14:01"
 },
-
-
 {
-	"index": 26,
-	"Month": "NOVEMBER",
-	"value": 2600,
-	"valueUSDC": 1300
-}, {
-	"index": 27,
-	"Month": "NOVEMBER",
-	"value": 2700,
-	"valueUSDC": 1350
-}, {
-	"index": 28,
-	"Month": "NOVEMBER",
-	"value": 2800,
-	"valueUSDC": 1400
-}, {
-	"index": 29,
-	"Month": "NOVEMBER",
-	"value": 2900,
-	"valueUSDC": 1450
+	"liquidityRate_avg": 0.031087750515641638,
+	"Month":"2014-01-01 14:10"
+},
+{
+	"liquidityRate_avg": 0.031034187226499397,
+	"Month":"2014-01-01 14:30"
+},
+{
+	"liquidityRate_avg": 0.03112307927533224,
+	"Month":"2014-01-01 14:40"
+},
+{
+	"liquidityRate_avg": 0.03116782269509544,
+	"Month":"2014-01-01 14:50"
+},
+{
+	"liquidityRate_avg": 0.03196308703543164,
+	"Month":"2014-01-01 15:00"
+},
+{
+	"liquidityRate_avg": 0.03099258319811256,
+	"Month":"2014-01-01 16:10"
+},
+{
+	"liquidityRate_avg": 0.03147101496090792,
+	"Month":"2014-01-01 16:20"
+},
+{
+	"liquidityRate_avg": 0.031081221077113436,
+	"Month":"2014-01-01 16:30"
+},
+{
+	"liquidityRate_avg": 0.03135059620226532,
+	"Month":"2014-01-01 13:10"
+},
+{
+	"liquidityRate_avg": 0.03135305941954344,
+	"Month":"2014-01-01 13:23"
+},
+{
+	"liquidityRate_avg": 0.03126682828888092,
+	"Month":"2014-01-01 13:01"
+	
+
 }
+
 ]
