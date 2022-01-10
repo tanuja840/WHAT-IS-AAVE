@@ -3,7 +3,7 @@ const fs = require('fs');
 const { json } = require('stream/consumers');
 
 
-const port = 3333;
+const port = 3339;
 const index = fs.readFileSync('index.html')
 const api = fs.readFileSync('./api.json')
 
