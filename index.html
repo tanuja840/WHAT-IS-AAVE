@@ -14,38 +14,35 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
-  <script src="app.js" type="text/javascript"></script>
-  <script>
+  <script src="app/app.js"></script>
+  
+ 
+<script>
+window.onload = function () {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    getData();
 
+    async function getData() {
+  const response = await fetch('http://localhost:3339/api');
+  console.log(response);
+  const data = await response.json();
+  console.log(data);
+ 
+  const res = { liquidityRate_avg: [], Month: [] };
+data.data.forEach((i) => {
+    res.liquidityRate_avg.push(i.liquidityRate_avg);
+    res.Month.push(i.Month);
+});
+console.log(res);
 
-
-      async function getData() {
-        const response = await fetch('http://localhost:3339/app');
-        console.log(response);
-        const data = await response.json();
-        console.log(data);
-        var liquidity =[ {1:  0.030997913667039, 2: 0.031087750515641638, 3: 0.031034187226499397, 4 :0.03112307927533224,5: 0.03116782269509544,6:0.03196308703543164,7: 0.03099258319811256,8:0.03147101496090792,9:0.031081221077113436,10:0.03135059620226532,11:0.03135305941954344,12:0.03126682828888092}];
-        var result = Object.keys(liquidity).map(function (key) {
-          
-          // Using Number() to convert key to number type
-          // Using obj[key] to retrieve key value
-          return [Number(key), liquidity[key]];
-      });
-        
-      // Printing values
-      for(var i = 0; i < result.length; i++) {
-          for(var z = 0; z < result[i].length; z++) {
-              document.write(result[i][z] + " ");
-          }
-          document.write("</br>");
-      }
+     
 
 
 
          labels = [];
 
 
-        labels.push(data.Month);
+        labels=res.Month;
 
         var myChart = new Chart(ctx, {
           type: 'line',
@@ -58,17 +55,17 @@
                 borderColor: "grey",
                 pointBackgroundColor: "#fff",
                 pointRadius: 5,
-                data: data.liquidityRate_avg
+                data: data.data.map((i) => ({ x: i.Month, y: i.liquidityRate_avg }))
+
               },
-              {
+            {
                 label: "USDT",
                 fill: false,
                 borderColor: "blue",
                 pointBackgroundColor: "#fff",
                 pointRadius: 5,
-                data: [{x: 2014-01-01,13:12, y:  0.03150913206878064}, {x: 2014-01-02,13:20, y: 0.03099128668613856}, {x: 2014-01-03,13:30, y:  0.031547053664307}, {x: 2014-01-01,14:01, y: 0.030997913667039},{x: 2014-01-01,14:10, y:  0.031087750515641638},{x: 2014-01-01,14:30, y: 0.031034187226499397},{x: 2014-01-01,14:40, y: 0.03112307927533224}],
-
-              }
+                data:  data.data.map((i) => ({ x: i.Month, y: i.liquidityRate_avg }))
+               }
             ]
           },
           options: {
@@ -91,7 +88,7 @@
 
           }
         });
-
+      }
       }
 
     
@@ -370,7 +367,7 @@
   <div class="col-md-12 mt-5">
     <footer>
       <div class="col-md-6">
-        <img src="dawnload.png" alt="" width="150">
+        <img src="/dawnload.png" alt="" width="150">
       </div>
 
       <div class="col-md-6">
