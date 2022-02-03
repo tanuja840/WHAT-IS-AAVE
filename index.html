@@ -16,83 +16,73 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
   <script src="app/app.js"></script>
   
- 
-<script>
-window.onload = function () {
-    var ctx = document.getElementById("myChart").getContext("2d");
-    getData();
+  <script>
+        let apiLabels = [];
+        let apiData = [];
+        let currentTimestamp = (Math.floor(Date.now() / 1000)).toString();
+        
+        //use this URL for daily fetch
+        //let url = "https://aave-api-v2.aave.com/data/rates-history?reserveId=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5&resolutionInHours=24&from="+currentTimestamp;
+        
+        let url = "https://aave-api-v2.aave.com/data/rates-history?reserveId=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5&resolutionInHours=24&from=1639813032";
+        
+        // fetch from api
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            let myData = JSON.parse(this.responseText);
+            console.log(myData);
+            for(let i=0;i<myData.length;i++){
+                let formedDate = (myData[i]['x']['year']+'-'+myData[i]['x']['month']+'-'+myData[i]['x']['date']).toString();
+                console.log(formedDate);
+                let formedLiquidData = (Math.floor(myData[i]['liquidityRate_avg']*1000)/1000)*10;
+                 
+                apiLabels.push(formedDate);
+                apiData.push(formedLiquidData);
+            }
 
-    async function getData() {
-  const response = await fetch('http://localhost:3339/api');
-  console.log(response);
-  const data = await response.json();
-  console.log(data);
- 
-  const res = { liquidityRate_avg: [], Month: [] };
-data.data.forEach((i) => {
-    res.liquidityRate_avg.push(i.liquidityRate_avg);
-    res.Month.push(i.Month);
-});
-console.log(res);
-
-     
-
-
-
-         labels = [];
-
-
-        labels=res.Month;
-
-        var myChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: labels,
-            datasets: [
-              {
-                label: "USDC",
-                fill: false,
-                borderColor: "grey",
-                pointBackgroundColor: "#fff",
-                pointRadius: 5,
-                data: data.data.map((i) => ({ x: i.Month, y: i.liquidityRate_avg }))
-
-              },
+            const data = {
+          labels: apiLabels,
+          datasets: [
             {
-                label: "USDT",
-                fill: false,
-                borderColor: "blue",
-                pointBackgroundColor: "#fff",
-                pointRadius: 5,
-                data:  data.data.map((i) => ({ x: i.Month, y: i.liquidityRate_avg }))
-               }
-            ]
-          },
+              label: "USDC",
+              
+              borderColor: "rgb(255, 99, 132)",
+              data: apiData
+            }
+          ]
+        };
+
+        const config = {
+          type: "line",
+          data: data,
           options: {
             scales: {
-              x: {
-                type: 'time',
-                time: {
-                  time: {
-                    parser: 'DD-MM-YYYY HH:mm',
-                  }
+                y: {
+                    ticks: {
+                        format: {
+                            style: 'percent'
+                        }
+                    }
                 }
-              },
-              y: [{
-                ticks: {
-                  beginAtZero: true
-                }
-              }]
-            },
-
-
+            }
+          }
+        };
+        
+        const myChart = new Chart(document.getElementById("myChart"), config);
           }
         });
-      }
-      }
+        xhr.open(
+          "GET",
+          url
+        );
+        xhr.send();
 
-    
-  </script>
+        
+      </script>
+    </div>
+    <div id="app"></div>
+
   <title>brew</title>
   <style>
     body {
