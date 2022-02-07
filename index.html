@@ -25,7 +25,8 @@
         //let url = "https://aave-api-v2.aave.com/data/rates-history?reserveId=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5&resolutionInHours=24&from="+currentTimestamp;
         
         let url = "https://aave-api-v2.aave.com/data/rates-history?reserveId=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5&resolutionInHours=24&from=1639813032";
-        
+           // months list
+           const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         // fetch from api
         var xhr = new XMLHttpRequest();
         xhr.addEventListener("readystatechange", function () {
@@ -33,8 +34,11 @@
             let myData = JSON.parse(this.responseText);
             console.log(myData);
             for(let i=0;i<myData.length;i++){
-                let formedDate = (myData[i]['x']['year']+'-'+myData[i]['x']['month']+'-'+myData[i]['x']['date']).toString();
+                  //let formedDate = (myData[i]['x']['year']+'-'+myData[i]['x']['month']+'-'+myData[i]['x']['date']).toString();
+
+                  let formedDate = monthNames[myData[i]['x']['month']]+' '+myData[i]['x']['date'];
                 console.log(formedDate);
+
                 let formedLiquidData = (Math.floor(myData[i]['liquidityRate_avg']*1000)/1000)*10;
                  
                 apiLabels.push(formedDate);
@@ -47,7 +51,7 @@
             {
               label: "USDC",
               
-              borderColor: "rgb(255, 99, 132)",
+              borderColor: "rgb(180,11,107)",
               data: apiData
             }
           ]
@@ -247,12 +251,38 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-6">
-        <div class="box-prices">
+        <div class="aave-prices">
           <p>AAVE PRICE</p>
           <p>$172.8</p>
           <p>16%</p>
         </div>
       </div>
+<script>
+  var apikey = {
+    key:'2280841e-2f7c-4369-a256-c82e60291142'
+}
+    
+request('GET','https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=' +'2280841e-2f7c-4369-a256-c82e60291142' )
+.then((r1) => {
+    var x1 = JSON.parse(r1.target.responseText);
+    console.log(x1.data.quote.USD.price);
+}).catch(err => {
+    console.log(err);
+})  
+    
+function request(method, url) {
+        return new Promise(function (resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.onload = resolve;
+            xhr.onerror = reject;
+            xhr.send();
+        });
+}
+</script>
+
+ <!------------------------AAVE DESCRIPTION ------------>
+
       <div class="col-md-6">
         <h1>What is AAVE ?</h1>
         <p>Aave is an open source and non-custodial liquidity protocol for earning
@@ -260,6 +290,10 @@
       </div>
     </div>
 
+  
+
+
+ <!------------------------AAVe CHAIN ------------>
 
     <div class="row">
       <div class="col-md-12 mt-3">
