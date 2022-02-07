@@ -39,7 +39,8 @@
                   let formedDate = monthNames[myData[i]['x']['month']]+' '+myData[i]['x']['date'];
                 console.log(formedDate);
 
-                let formedLiquidData = (Math.floor(myData[i]['liquidityRate_avg']*1000)/1000)*10;
+                let formedLiquidData = (myData[i]['liquidityRate_avg']*100+"%");
+                
                  
                 apiLabels.push(formedDate);
                 apiData.push(formedLiquidData);
@@ -63,12 +64,17 @@
           options: {
             scales: {
                 y: {
-                    ticks: {
-                        format: {
-                            style: 'percent'
-                        }
-                    }
+                  ticks: {
+            
+            min: 0,
+            max: 100,
+            callback: function(value){return value+ "%"}
+         },  
+         scaleLabel: {
+            display: true,
+            labelString: "Percentage"
                 }
+              }
             }
           }
         };
