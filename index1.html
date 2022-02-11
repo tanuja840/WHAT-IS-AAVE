@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+  <meta charset="UTF-8">
+
+
+
+
+
+  <!-- Bootstrap CSS -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="app/app.js"></script>
+
+
+
+  <script>
+
+    let apiLabels = [];
+
+    let apiData = [];
+
+    let currentTimestamp = (Math.floor(Date.now() / 1000)).toString();
+
+
+
+    //use this URL for daily fetch
+
+    //let url = "https://aave-api-v2.aave.com/data/rates-history?reserveId=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5&resolutionInHours=24&from="+currentTimestamp;
+
+
+
+    let url = "https://aave-api-v2.aave.com/data/rates-history?reserveId=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb480xb53c1a33016b2dc2ff3653530bff1848a515c8c5&resolutionInHours=24&from=1639813032";
+
+    // months list
+
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+
+    // fetch from api
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.addEventListener("readystatechange", function () {
+
+      if (this.readyState === 4) {
+
+        let myData = JSON.parse(this.responseText);
+
+        console.log(myData);
+
+        for (let i = 0; i < myData.length; i++) {
+
+          //let formedDate = (myData[i]['x']['year']+'-'+myData[i]['x']['month']+'-'+myData[i]['x']['date']).toString();
+
+
+
+          let formedDate = monthNames[myData[i]['x']['month']] + ' ' + myData[i]['x']['date'];
+
+          console.log(formedDate);
+
+
+
+          let formedLiquidData = (myData[i]['liquidityRate_avg'] * 100).toFixed(2);
+
+
+
+
+
+          console.log(formedLiquidData + "%");
+
+
+
+          apiLabels.push(formedDate);
+
+          apiData.push(formedLiquidData);
+
+        }
+
+
+
+        const data = {
+
+          labels: apiLabels,
+
+          datasets: [
+
+            {
+
+              label: "USDC",
+
+              borderColor: "rgb(180,11,107)",
+
+              data: apiData
+
+            }
+
+          ]
+
+        };
+
+
+
+        const config = {
+
+          type: "line",
+
+          data: data,
+
+          options: {
+            // plugins: {
+            //   tooltip: {
+            //     callbacks: {
+            //       label: function (formedLiquid) {
+                    
+            //         let label = formedLiquid.dataset.label || '';
+
+            //         label += new Intl.NumberFormat('en-US', { style: 'percent' }).format(formedLiquid.parsed.y);
+
+            //         return label;
+            //       }
+            //     }
+            //   }
+            // },
+
+
+            scales: {
+
+              y: {
+
+
+                ticks: {
+                  callback: function (value, index, values) {
+
+                    return value + '%';
+                  }
+                }
+
+              },
+
+            },
+
+          },
+
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        const myChart = new Chart(document.getElementById("myChart"), config);
+
+      }
+
+    });
+
+    xhr.open(
+
+      "GET",
+
+      url
+
+    );
+
+    xhr.send();
+
+
+
+
+
+  </script>
+
+  </div>
+
+  <div id="app"></div>
+
+
+
+  <title>brew</title>
+
+  <style>
+    body {
+
+      background-color: white;
+
+    }
+
+
+
+    .center-form {
+
+      width: 80%;
+
+      margin: auto;
+
+    }
+
+
+
+    #title {
+
+      color: teal;
+
+      text-align: center;
+
+    }
+
+
+
+
+
+    .waitlist {
+
+      position: relative;
+
+      z-index: 3;
+
+      width: 146px;
+
+      height: 30px;
+
+      margin-top: 60px;
+
+      border-style: solid;
+
+      border-width: 1px;
+
+      border-color: #081852;
+
+      background-color: transparent;
+
+      box-shadow: -10px 10px 0 0 #081852;
+
+      color: #081852;
+
+      font-size: 12px;
+
+      line-height: 30px;
+
+      font-weight: 400;
+
+      text-align: center;
+
+      letter-spacing: 0.21px;
+
+      position: fixed;
+
+      right: 3%;
+
+      top: -5%;
+
+    }
+
+
+
+    .waitlist-button {
+
+      display: inline-block;
+
+      padding: 9px 15px;
+
+      background-color: #3898EC;
+
+      color: white;
+
+      border: 0;
+
+      line-height: inherit;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      border-radius: 0;
+
+    }
+
+
+
+
+
+    .box-prices {
+
+      padding: 20px;
+
+      width: 200px;
+
+      height: auto;
+
+      color: #000;
+
+      /* background-color: #fff; */
+
+      border: 4px solid #1c1c53;
+
+      border-radius: 2px;
+
+    }
+
+
+
+
+
+
+
+    .dropbtn {
+
+      background-color: navy;
+
+      color: white;
+
+      padding: 16px;
+
+      font-size: 16px;
+
+      border: none;
+
+    }
+
+
+
+
+
+    .dropdown-content {
+
+      display: none;
+
+      position: absolute;
+
+      background-color: #f1f1f1;
+
+      min-width: 160px;
+
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+      z-index: 1;
+
+    }
+
+
+
+    .dropdown-content a {
+
+      color: black;
+
+      padding: 12px 16px;
+
+      text-decoration: none;
+
+      display: block;
+
+    }
+
+
+
+    .dropdown-content a:hover {
+
+      background-color: #ddd;
+
+    }
+
+
+
+
+
+    .dropdown:hover .dropdown-content {
+
+      display: block;
+
+    }
+
+
+
+
+
+    .dropdown:hover .dropbtn {
+
+      background-color: #0b95f1;
+
+    }
+
+
+
+
+
+    footer {
+
+      display: flex;
+
+      justify-content: space-between;
+
+    }
+
+
+
+    .myChart {
+
+      width: 50%;
+
+      height: 40px;
+
+    }
+
+
+
+    /* Decorative */
+
+    a {
+
+      text-decoration: none;
+
+      color: #555;
+
+    }
+
+
+
+
+
+
+
+    footer {
+
+      background-color: #82cdf8;
+
+      padding: 20px 40px;
+
+
+
+    }
+
+
+
+    .right {
+
+      float: left;
+
+      text-align: center;
+
+    }
+
+
+
+    .article {
+
+      color: white;
+
+    }
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+  <img src="https://uploads-ssl.webflow.com/61768faf04d20bf3487b5a2a/6176a6363e64b8d84e32d0b7_brew-icon-256px-v2.png"
+    loading="eager" width="55" height="55" alt="Brew" class="img-logo" position="absolute" top="-3%" left="7;">
+
+  <!-------------- title------------------------>
+
+
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-12 mt-2">
+
+        <h1 style="color: #1c98">
+
+          Stablecoin Deposits on Aave
+
+        </h1>
+
+        <a data-w-id="14f1dfb2-926f-581f-7faa-3f62171b1db3" href="" class="waitlist waitlist-button">Join the
+
+          waitlist</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <!------------------------AAVE PRICE ------------>
+
+
+
+  <div class="container">
+
+    <div class="row mt-5">
+
+      <div class="col-md-6">
+
+        <div class="aave-prices">
+
+          <p>AAVE PRICE</p>
+
+          <p>$172.8</p>
+
+          <p>16%</p>
+
+        </div>
+
+      </div>
+
+
+
+      <!------------------------AAVE DESCRIPTION ------------>
+
+
+
+      <div class="col-md-6">
+
+        <h1>What is AAVE ?</h1>
+
+        <p>Aave is an open source and non-custodial liquidity protocol for earning
+
+          interest on deposits and borrowing assets.</p>
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!------------------------AAVe CHAIN ------------>
+
+
+
+    <div class="row">
+
+      <div class="col-md-12 mt-3">
+
+        <button class="dropbtn">CHAIN</button>
+
+        <div class="dropdown-content">
+
+          <a href="#">Polygon</a>
+
+          <a href="#">Ethereum</a>
+
+          <a href="#">Avalance</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!------graph----->
+
+  <div>
+
+    <canvas id="myChart" height="50" weidth="50"></canvas>
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- calculator -->
+
+  <div class="container mt-5" style="border: 1px solid black; border-radius: 5px;">
+
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <h1 id="title">How Much You Can Earn ?</h1>
+
+      </div>
+
+    </div>
+
+    <br>
+
+
+
+    <div class="row">
+
+      <div class="col-md-6">
+
+        <form>
+
+          <div class="form-group mt-2">
+
+            <label class="form-group">Amount</label>
+
+            <input class="form-control mt-2" type="text" id="principal" placeholder="&#36;">
+
+          </div>
+
+          <div class="form-group mt-2">
+
+            <label class="form-group">Interest rate:&nbsp;&nbsp;&nbsp;4%</label>
+
+          </div>
+
+          <div class="form-group mt-2">
+
+            <label class="form-group">Compound Freequency:&nbsp;&nbsp;&nbsp;Daily</label>
+
+          </div>
+
+
+
+          <div class="form-group mt-2">
+
+            <label class="form-group">Payout Freequency:&nbsp;&nbsp;&nbsp;Monthly</label>
+
+          </div>
+
+
+
+          <button class="btn btn-block btn-info mt-3" type="button" onclick="calculate()">Calculate</button>
+
+        </form>
+
+      </div>
+
+      <div class="col-md-6">
+
+
+
+
+
+
+
+        <form style="padding-top: 70px;">
+
+          <div class="form-group mt-2">
+
+            <label class="form-group">Interest rate:&nbsp;&nbsp;&nbsp;5%</label>
+
+          </div>
+
+          <div class="form-group mt-2">
+
+            <label class="form-group">Compound Freequency:&nbsp;&nbsp;&nbsp;Daily</label>
+
+          </div>
+
+
+
+          <div class="form-group mt-2">
+
+            <label class="form-group">Payout Freequency:&nbsp;&nbsp;&nbsp;Monthly</label>
+
+          </div>
+
+        </form>
+
+
+
+      </div>
+
+    </div>
+
+    <br>
+
+
+
+
+
+    <div class="row">
+
+      <div class="col-md-6">
+
+        <h5 class="total">Result USD</h5>
+
+        <h1 id="USD"></h1>
+
+      </div>
+
+
+
+      <div class="col-md-6">
+
+        <h5 class="total">Result USDT</h5>
+
+        <h1 id="USDC"></h1>
+
+      </div>
+
+    </div>
+
+
+
+
+
+  </div>
+
+  <!-- calculator end -->
+
+  <div>
+
+    <canvas id="myChart_subbagain" height="50" weidth="50" top="80%"></canvas>
+
+  </div>
+
+  <!----footer-->
+
+
+
+
+
+  <div class="col-md-12 mt-5">
+
+    <footer>
+
+      <div class="col-md-6">
+
+        <img src="/dawnload.png" alt="" width="150">
+
+      </div>
+
+
+
+      <div class="col-md-6">
+
+        <section class="right">
+
+          <a href="https://www.brew.money/">Join Brew Today</a>
+
+          <article>USDC is not a legal tender recognised by US or any other government. Unlike a bank account, your
+
+            deposit is not insured. While Brew will make every effort to ensure that your deposit earn the best interest
+
+            rates in the most secure way possible, please note that any investment entails risk. Interest Rates are
+
+            subject to change anytime as per the market conditions.</article>
+
+        </section>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+
+<script type="text/javascript">
+
+
+
+  function calculate() {
+
+    var principle = 0;
+
+    var interest = 5 / 100;
+
+    var numberOfPeriod = 12;
+
+    var time = 10;
+
+    var CI = 0;
+
+
+
+    principle = document.getElementById("principal").value;
+
+
+
+    // CI = ((p * (1 + i) ^ n) - p);
+
+
+
+    CI = principle * (1 + interest / numberOfPeriod) ^ (numberOfPeriod * time);
+
+
+
+    document.getElementById("USD").innerHTML = CI;
+
+    document.getElementById("USDC").innerHTML = CI;
+
+
+
+  }
+
+</script>
+
+
+
+<!------cal graph-->
+
+
+
+</html>
