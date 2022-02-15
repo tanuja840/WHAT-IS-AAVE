@@ -27,7 +27,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
 
   <script src="app/app.js"></script>
 
@@ -83,10 +83,6 @@
 
           let formedLiquidData = (myData[i]['liquidityRate_avg'] * 100).toFixed(2);
 
-
-
-
-
           console.log(formedLiquidData + "%");
 
 
@@ -108,6 +104,7 @@
             {
 
               label: "USDC",
+              
 
               borderColor: "rgb(180,11,107)",
 
@@ -126,58 +123,35 @@
           type: "line",
 
           data: data,
-
           options: {
-            // plugins: {
-            //   tooltip: {
-            //     callbacks: {
-            //       label: function (formedLiquid) {
-                    
-            //         let label = formedLiquid.dataset.label || '';
-
-            //         label += new Intl.NumberFormat('en-US', { style: 'percent' }).format(formedLiquid.parsed.y);
-
-            //         return label;
-            //       }
-            //     }
-            //   }
-            // },
+            tooltips: {
+              
+              enabled: true,
+              mode: 'single',
+              callbacks: {
+                label: function (tooltipItems, data) {
+                  return 'USDC: ' + tooltipItems.yLabel + '%';
+                }
+              } 
+            },
+           
 
 
             scales: {
 
-              y: {
-
-
+              yAxes: [{
                 ticks: {
-                  callback: function (value, index, values) {
-
-                    return value + '%';
+                  callback: function (tick) {
+                    return tick + '%';
                   }
                 }
+              }]
 
-              },
-
-            },
+            }
 
           },
 
         };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         const myChart = new Chart(document.getElementById("myChart"), config);
 
       }
@@ -214,7 +188,7 @@
       background-color: white;
 
     }
-
+  
 
 
     .center-form {
@@ -602,6 +576,7 @@
   <div>
 
     <canvas id="myChart" height="50" weidth="50"></canvas>
+    <div id="chartjs-tooltip"></div>
 
   </div>
 
